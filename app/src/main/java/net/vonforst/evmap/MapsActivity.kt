@@ -342,12 +342,20 @@ class MapsActivity : AppCompatActivity(),
         }
     }
 
-    fun shareUrl(url: String) {
+    fun shareUrl(url: String, rootView: View) {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
             putExtra(Intent.EXTRA_TEXT, url)
         }
-        startActivity(intent)
+        try {
+            startActivity(intent)
+        } catch (e: ActivityNotFoundException) {
+            Snackbar.make(
+                rootView,
+                R.string.no_share_app_found,
+                Snackbar.LENGTH_SHORT
+            ).show()
+        }
     }
 
     override fun onPreferenceStartFragment(

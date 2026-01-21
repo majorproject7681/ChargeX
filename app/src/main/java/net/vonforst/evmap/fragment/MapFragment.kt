@@ -513,7 +513,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, MenuProvider {
                 R.id.menu_share -> {
                     val charger = vm.charger.value?.data
                     if (charger != null && charger.url != null) {
-                        (activity as? MapsActivity)?.shareUrl(charger.url)
+                        (activity as? MapsActivity)?.shareUrl(charger.url, binding.root)
                     }
                     true
                 }
