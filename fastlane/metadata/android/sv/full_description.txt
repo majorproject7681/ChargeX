@@ -1,4 +1,4 @@
-Med EVMap hittar du enkelt laddare för elfordon med hjälp av din Android-telefon. Du får tillgång till data från GoingElectric.de och Open Charge Map som innehåller information om laddstationer över hela världen. För många laddstationer i Europa finns realtidsstatus.
+Med EVMap hittar du enkelt laddare till elfordon med hjälp av din Android-telefon. Du får tillgång till data från GoingElectric.de och Open Charge Map som innehåller information om laddstationer över hela världen. För många laddstationer i Europa finns realtidsstatus.
 
 Funktioner:
 - Material Design
