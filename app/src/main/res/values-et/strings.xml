@@ -293,7 +293,7 @@
     <string name="reload">Laadi uuesti</string>
     <string name="auto_chargeprice_vehicle_ambiguous">Mitu selles rakenduses valitud mudelit vastavad selle sõiduki mudelile (%1$s %2$s).</string>
     <string name="navigate">Näita teed</string>
-    <string name="donation_dialog_detail">EVMap põhineb avatud lähtekoodil on tasuta ja vabaks kasutamiseks. Me hea meelega näeme ka huviliste kaastööd GitHubis. Andmekasutusega seotud kulude kastmiseks palun kaalu võimalust arendaja rahaliseks toetamiseks sinu valitud summaga.</string>
+    <string name="donation_dialog_detail">EVMap põhineb avatud lähtekoodil on tasuta ja vabaks kasutamiseks. Me hea meelega näeme ka huviliste kaastööd GitHubis. Andmekasutusega seotud kulude katmiseks palun kaalu võimalust arendaja rahaliseks toetamiseks sinu valitud summaga.</string>
     <string name="chargeprice_donation_dialog_title">Sa tõesti otsid parimaid pakkumisi!</string>
     <string name="chargeprice_donation_dialog_detail">Kasutad hoolega hinnavõrdluse funktsionaalsust. Sellega andmevahetusega seotud kulude katmiseks palun kaalu EVMapi rahalist toetamist.</string>
     <string name="deleted_item">Kustutasime „%s“</string>
@@ -389,4 +389,6 @@
     <string name="chargeprice_removal_2025_dialog_title">Vabandust!</string>
     <string name="chargeprice_removal_2025_dialog_detail">Chargeprice\'i andmete maksumus on 2025. aastast järsult kasvanud ja rahalistest toetustest meile pole võimalik seda enam rahastada. Seega EVMap ei saa neid andmeid enam otse näidata. Asendusena on esialgu kasutusel link Chargeprice\'i veebisaiti. Oleme arendamas ka alternatiivset lahendust, aga selleks kulub aega ning ta võib kasutusele tulla piiratud funktsionaalsuses. Suur tänu teie toe eest!</string>
     <string name="auto_use_new_map_screen">Uus kaardivaade (beetaversioon)</string>
+    <string name="auto_confirm_delete_profile">Kas soovid kustutada filtriprofiili „%s“?</string>
+    <string name="no_share_app_found">Ei leidunud rakendust, millega sisu jagada</string>
 </resources>
