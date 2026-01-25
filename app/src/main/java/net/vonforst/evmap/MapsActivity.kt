@@ -15,6 +15,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.browser.customtabs.CustomTabColorSchemeParams
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
+import androidx.core.net.toUri
 import androidx.core.splashscreen.SplashScreen
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.core.view.ViewCompat
@@ -254,11 +255,9 @@ class MapsActivity : AppCompatActivity(),
     fun showLocation(charger: ChargeLocation, rootView: View) {
         val coord = charger.coordinates
         val intent = Intent(Intent.ACTION_VIEW)
-        intent.data = Uri.parse(
-            "geo:${coord.lat},${coord.lng}?q=${coord.lat},${coord.lng}(${
-                Uri.encode(charger.name)
-            })"
-        )
+        intent.data = "geo:${coord.lat},${coord.lng}?q=${coord.lat},${coord.lng}(${
+            Uri.encode(charger.name)
+        })".toUri()
 
         val resolveInfo =
             packageManager.resolveActivity(intent, PackageManager.MATCH_DEFAULT_ONLY)
@@ -277,11 +276,18 @@ class MapsActivity : AppCompatActivity(),
         try {
             startActivity(intent)
         } catch (e: ActivityNotFoundException) {
-            Snackbar.make(
-                rootView,
-                R.string.no_maps_app_found,
-                Snackbar.LENGTH_SHORT
-            ).show()
+            try {
+                // if the intent is not working with an explicit package for some reason,
+                // as a last resort, try again without package
+                intent.setPackage(null)
+                startActivity(intent)
+            } catch (e: ActivityNotFoundException) {
+                Snackbar.make(
+                    rootView,
+                    R.string.no_maps_app_found,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -294,12 +300,12 @@ class MapsActivity : AppCompatActivity(),
             )
             .build()
 
-        val uri = Uri.parse(url)
+        val uri = url.toUri()
         val viewIntent = Intent(Intent.ACTION_VIEW, uri)
         if (preferBrowser) {
             // EVMap may be set as default app for this link, but we want to open it in a browser
             // try to find default web browser
-            val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse("http://"))
+            val browserIntent = Intent(Intent.ACTION_VIEW, "http://".toUri())
             val resolveInfo =
                 packageManager.resolveActivity(browserIntent, PackageManager.MATCH_DEFAULT_ONLY)
             val pkg = resolveInfo?.activityInfo?.packageName.takeIf { it != "android" }
@@ -334,11 +340,18 @@ class MapsActivity : AppCompatActivity(),
         try {
             intent.launchUrl(this, uri)
         } catch (e: ActivityNotFoundException) {
-            Snackbar.make(
-                rootView,
-                R.string.no_browser_app_found,
-                Snackbar.LENGTH_SHORT
-            ).show()
+            try {
+                // if the intent is not working with an explicit package for some reason,
+                // as a last resort, try again without package
+                intent.intent.setPackage(null)
+                intent.launchUrl(this, uri)
+            } catch (e: ActivityNotFoundException) {
+                Snackbar.make(
+                    rootView,
+                    R.string.no_browser_app_found,
+                    Snackbar.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
