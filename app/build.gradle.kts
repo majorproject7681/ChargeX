@@ -16,13 +16,13 @@ android {
     useLibrary("android.car")
 
     defaultConfig {
-        applicationId = "net.vonforst.evmap"
+        applicationId = "com.chargex.app"
         compileSdk = 36
         minSdk = 23
         targetSdk = 36
         // NOTE: always increase versionCode by 2 since automotive flavor uses versionCode + 1
-        versionCode = 270
-        versionName = "2.1.0"
+        versionCode = 1
+        versionName = "1.0.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
